@@ -349,5 +349,77 @@ namespace Calculator
                     break;
             }
         }
+        private void Button_Click_C(object sender, RoutedEventArgs e) //Полная очистка
+        {
+            fis = 0;
+            sec = 0;
+            thi = 0;
+            perc = 0;
+            sqrt = 0;
+            cou = 0;
+            Console.Text = "0";
+            ShowSteps.Clear();
+            cl = true;
+            zn = false;
+            zap = false;
+        }
+        private void Button_Click_CE(object sender, RoutedEventArgs e) //Очистка ввода
+        {
+            Console.Text = "0";
+            zero = true;
+            cl = true;
+        }
+        private void Button_Click_Eraser(object sender, RoutedEventArgs e) //Стереть один знак с конца
+        {
+            int len = Console.Text.Length - 1;
+            string text = Console.Text;
+            Console.Clear();
+            for (int i = 0; i < len; i++)
+            {
+                Console.Text += text[i];
+            }
+        }
+        private void Button_Click_abs(object sender, RoutedEventArgs e) //Изменение знака числа
+        {
+            if (float.Parse(Console.Text) == 0)
+            {
+                return;
+            }
+            if (abs)
+            {
+                Console.Text = "-" + Console.Text;
+                abs = false;
+            }
+            else
+            {
+                Console.Text = Console.Text.Replace("-", " ");
+                abs = true;
+            }
+        }
+        private void Button_Click_sqrt(object sender, RoutedEventArgs e) //Взятие квадратного корня из числа
+        {
+            sqrt = float.Parse(Console.Text);
+            Console.Text = Convert.ToString(Math.Sqrt(sqrt));
+            ShowSteps.Text += "sqrt(" + sqrt + ")";
+            zn = true;
+            zap = false;
+        }
+        private void Button_Click_percent(object sender, RoutedEventArgs e) //Операции с процентами от числа
+        {
+            perc = (fis / 100) * float.Parse(Console.Text);
+            Console.Text = Convert.ToString(perc);
+            ShowSteps.Text += Console.Text;
+            zap = false;
+
+        }
+        private void Button_Click_1naX(object sender, RoutedEventArgs e) //Деление 1 на введёное число
+        {
+            float naX = float.Parse(Console.Text);
+            ShowSteps.Text += "reciproc(" + naX + ")";
+            float prom = 1 / naX;
+            Console.Text = prom.ToString();
+            zn = true;
+            zap = false;
+        }
     }
 }
