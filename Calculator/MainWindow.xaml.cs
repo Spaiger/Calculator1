@@ -381,19 +381,28 @@ namespace Calculator
         }
         private void Button_Click_abs(object sender, RoutedEventArgs e) //Изменение знака числа
         {
-            if (float.Parse(Console.Text) == 0)
+            char[] minus = {'-'};
+            if (Console.Text == "0")
             {
                 return;
             }
-            if (abs)
+            if (Console.Text[0] == '-')
             {
-                Console.Text = "-" + Console.Text;
                 abs = false;
             }
             else
             {
-                Console.Text = Console.Text.Replace("-", " ");
                 abs = true;
+            }
+            if (abs) //&& Console.Text[0] != '-')
+            {
+                Console.Text = "-" + Console.Text;
+                //abs = false;
+            }
+            else if(!abs )//&& Console.Text[0] == '-')
+            {
+                Console.Text = Console.Text.TrimStart(minus);
+                //abs = true;
             }
         }
         private void Button_Click_sqrt(object sender, RoutedEventArgs e) //Взятие квадратного корня из числа
@@ -420,6 +429,30 @@ namespace Calculator
             Console.Text = prom.ToString();
             zn = true;
             zap = false;
+        }
+        private void Button_Click_MC(object sender, RoutedEventArgs e) //Очистка памяти
+        {
+            memory = 0;
+            MemoryShow.Clear();
+        }
+        private void Button_Click_MR(object sender, RoutedEventArgs e) //Вывод из памяти
+        {
+            Console.Clear();
+            Console.Text = memory.ToString();
+        }
+        private void Button_Click_MS(object sender, RoutedEventArgs e) //Сохранение в память
+        {
+            memory = float.Parse(Console.Text);
+            MemoryShow.Text = "M";
+            cl = true;
+        }
+        private void Button_Click_Mplus(object sender, RoutedEventArgs e) //Прибавление к памяти
+        {
+            memory += float.Parse(Console.Text);
+        }
+        private void Button_Click_Mminus(object sender, RoutedEventArgs e) //Вычитание из памяти
+        {
+            memory -= float.Parse(Console.Text);
         }
     }
 }
