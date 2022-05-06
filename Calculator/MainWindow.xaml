@@ -41,7 +41,7 @@
         <Button x:Name="buttonPlus" Content="+" HorizontalAlignment="Center" Height="32" VerticalAlignment="Center" Width="32" Grid.Column="3" Grid.Row="6" Click="Button_Click_plus"/>
         <Button x:Name="buttonEnter" Content="=" HorizontalAlignment="Left" Height="76" Margin="8,7,0,0" VerticalAlignment="Top" Width="32" Grid.RowSpan="2" Grid.Column="4" Grid.Row="5" Click="Button_Click_ecv"/>
         <Button x:Name="buttonPerc" Content="%" HorizontalAlignment="Left" Height="32" Margin="8,0,0,0" VerticalAlignment="Center" Width="32" Grid.Column="4" Grid.Row="3" Click="Button_Click_percent"/>
-        <Button Content="1/x" HorizontalAlignment="Left" Height="32" Margin="8,0,0,0" VerticalAlignment="Center" Width="32" Grid.Column="4" Grid.Row="4" Click="Button_Click_1naX"/>
+        <Button x:Name="button1naX" Content="1/x" HorizontalAlignment="Left" Height="32" Margin="8,0,0,0" VerticalAlignment="Center" Width="32" Grid.Column="4" Grid.Row="4" Click="Button_Click_1naX"/>
         <TextBox x:Name="ShowSteps" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="22,0,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="68" Background="{x:Null}" BorderBrush="{x:Null}" FontSize="10" TextAlignment="Right" IsReadOnly="True"/>
         <Button Content="C" HorizontalAlignment="Center" Height="32" VerticalAlignment="Center" Width="32" Click="Button_Click_C" Grid.Column="2" Grid.Row="2"/>
         <Button x:Name="buttonBackspace" Content="&lt;-" HorizontalAlignment="Center" Height="32" VerticalAlignment="Center" Width="32" Click="Button_Click_Eraser" Grid.Row="2"/>
@@ -53,7 +53,7 @@
         <Button Content="M-" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="32" Click="Button_Click_Mminus" Grid.Row="1" Grid.Column="4" Margin="8,0,0,0"/>
         <TextBox x:Name="MemoryShow" HorizontalAlignment="Left" Margin="22,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="23" BorderBrush="{x:Null}" Background="{x:Null}" IsReadOnly="True"/>
         <Button Content="+/-" HorizontalAlignment="Center" Height="32" VerticalAlignment="Center" Width="32" Grid.Column="3" Grid.Row="2" Click="Button_Click_abs"/>
-        <Button Content="sqrt" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="32" Grid.Column="4" Grid.Row="2" Click="Button_Click_sqrt" Margin="8,0,0,0"/>
+        <Button x:Name="buttonSqrt" Content="sqrt" HorizontalAlignment="Left" Height="32" VerticalAlignment="Center" Width="32" Grid.Column="4" Grid.Row="2" Click="Button_Click_sqrt" Margin="8,0,0,0"/>
 
     </Grid>
 </Window>

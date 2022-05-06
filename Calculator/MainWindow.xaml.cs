@@ -26,13 +26,18 @@ namespace Calculator
         }
 
         private bool zap = false;
-        float fis, sec, thi, memory, sqrt, perc;
+        float fis,memory, sqrt, perc, def = 0;
         int cou;
         private bool abs = true;
         private bool zero = true;
         private bool ecv = false;
         private bool zn = false;
-        private bool cl;
+        private bool cl = true;
+        private bool tap_plus = false;
+        private bool tap_minus = false;
+        private bool tap_multiplie = false;
+        private bool fp = true;
+        private bool tap_delim = false;
         private void Button_Click_1(object sender, RoutedEventArgs e) //Number 1
         {
             if (zero)
@@ -202,130 +207,263 @@ namespace Calculator
         }
         private void Button_Click_plus(object sender, RoutedEventArgs e) //Operation plus
         {
-            fis = float.Parse(Console.Text);
-            cou = 1;
-            /*if (!tap_plus)
+            if (fp)
             {
-                fis = float.Parse(Console.Text);
-                shows = fis;
+                def += float.Parse(Console.Text);
+                ShowSteps.Text += def.ToString() + "+";
+                fp = false;
+                zn = false;
+                zap = false;
+                cl = true;
+                cou = 1;
+                return;
             }
-            if (tap_plus)
+            fis = float.Parse(Console.Text);
+            switch (cou)
             {
-                thi = float.Parse(Console.Text);
-                shows = thi;
-                operations(thi);
-            }*/
-            Console.Clear();
+                case 1:
+                    def += fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 2:
+                    def -= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 3:
+                    def *= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 4:
+                    def /= fis;
+                    Console.Text = def.ToString();
+                    break;
+            }
             if (zn)                                         //Добавление в предыдущие шаги
             {
-                ShowSteps.Text += "+" + fis.ToString();
+                ShowSteps.Text += "+";
             }
             else
             {
                 ShowSteps.Text += fis.ToString() + "+";
             }
-            abs = true;
+            cou = 1;
             zn = false;
             zap = false;
             cl = true;
-            /*tap_plus = true;
-            tap_minus = false;
-            tap_multiplie = false;
-            tap_delim = false;*/
         }
         private void Button_Click_minus(object sender, RoutedEventArgs e) //Operation minus
         {
+            if (fp)
+            {
+                def += float.Parse(Console.Text);
+                ShowSteps.Text += def.ToString() + "-";
+                fp = false;
+                zn = false;
+                zap = false;
+                cl = true;
+                cou = 2;
+                return;
+            }
             fis = float.Parse(Console.Text);
-            Console.Clear();
-            cou = 2;
+            switch (cou)
+            {
+                case 1:
+                    def += fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 2:
+                    def -= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 3:
+                    def *= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 4:
+                    def /= fis;
+                    Console.Text = def.ToString();
+                    break;
+            }
             if (zn)                                         //Добавление в предыдущие шаги
             {
-                ShowSteps.Text += "-" + fis.ToString();
+                ShowSteps.Text += "-";
             }
             else
             {
                 ShowSteps.Text += fis.ToString() + "-";
             }
-            abs = true;
+            cou = 2;
             zn = false;
             zap = false;
             cl = true;
-            /*tap_plus = false;
-            tap_minus = true;
-            tap_multiplie = false;
-            tap_delim = false;*/
         }
         private void Button_Click_multiplie(object sender, RoutedEventArgs e) //Operation multiplie
         {
+            if (fp)
+            {
+                def += float.Parse(Console.Text);
+                ShowSteps.Text += def.ToString() + "*";
+                fp = false;
+                zn = false;
+                zap = false;
+                cl = true;
+                cou = 3;
+                return;
+            }
             fis = float.Parse(Console.Text);
-            Console.Clear();
-            cou = 3;
+            switch (cou)
+            {
+                case 1:
+                    def += fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 2:
+                    def -= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 3:
+                    def *= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 4:
+                    def /= fis;
+                    Console.Text = def.ToString();
+                    break;
+            }
             if (zn)                                         //Добавление в предыдущие шаги
             {
-                ShowSteps.Text += "*" + fis.ToString();
+                ShowSteps.Text += "*";
             }
             else
             {
                 ShowSteps.Text += fis.ToString() + "*";
             }
-            abs = true;
+            cou = 3;
             zn = false;
             zap = false;
-            cl = true; ;
-            /*tap_plus = false;
-            tap_minus = false;
-            tap_multiplie = true;
-            tap_delim = false;*/
+            cl = true;
         }
         private void Button_Click_delim(object sender, RoutedEventArgs e) //Operation delim
         {
+            if (fp)
+            {
+                def += float.Parse(Console.Text);
+                ShowSteps.Text += def.ToString() + "/";
+                fp = false;
+                zn = false;
+                zap = false;
+                cl = true;
+                cou = 4;
+                return;
+            }
             fis = float.Parse(Console.Text);
-            Console.Clear();
-            cou = 4;
+            switch (cou)
+            {
+                case 1:
+                    def += fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 2:
+                    def -= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 3:
+                    def *= fis;
+                    Console.Text = def.ToString();
+                    break;
+                case 4:
+                    def /= fis;
+                    Console.Text = def.ToString();
+                    break;
+            }
             if (zn)                                         //Добавление в предыдущие шаги
             {
-                ShowSteps.Text += "/" + fis.ToString();
+                ShowSteps.Text += "/";
             }
             else
             {
                 ShowSteps.Text += fis.ToString() + "/";
             }
-            abs = true;
-            zap = false;
+            cou = 4;
             zn = false;
+            zap = false;
             cl = true;
-            /*tap_plus = false;
-            tap_minus = false;
-            tap_multiplie = false;
-            tap_delim = true;*/
         }
-        float c;
         private void Button_Click_ecv(object sender, RoutedEventArgs e) //Равно
         {
-            float t = float.Parse(Console.Text);
-            int i = 0;
             if (!ecv)
             {
-                c = t;
+                fis = float.Parse(Console.Text);
+                ShowSteps.Clear();
+                switch (cou)
+                {
+                    case 1:
+                        def += fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 2:
+                        def -= fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 3:
+                        def *= fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 4:
+                        def /= fis;
+                        Console.Text = def.ToString();
+                        break;
+                    default:
+                        Console.Text = def.ToString();
+                        break;
+                }
                 zero = true;
                 ecv = true;
-                if (i == 0)
-                {
-                    ShowSteps.Clear();
-                    operations(t);
-                }
-                i++;
             }
-            if (ecv)
+            else if (ecv)
             {
                 ShowSteps.Clear();
-                operations(c);
+                switch (cou)
+                {
+                    case 1:
+                        def += fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 2:
+                        def -= fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 3:
+                        def *= fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 4:
+                        def /= fis;
+                        Console.Text = def.ToString();
+                        break;
+                    case 5:
+                        Button_Click_sqrt(buttonSqrt, null);
+                        break;
+                    case 6:
+                        Button_Click_1naX(button1naX, null);
+                        break;
+                    default:
+                        return;
+                }
+
             }
-            fis = float.Parse(Console.Text);
+            def = 0;
+            cou = 0;
             zn = false;
             zap = false;
+            fp = true;
+            tap_plus = false;
+            tap_minus = false;
+            tap_multiplie = false;
+            tap_delim = false;
+    
         }
-        private void operations(float t) //Проведение вычисления
+        /*private void Operations(float t) //Проведение вычисления
         {
             switch (cou)
             {
@@ -348,15 +486,16 @@ namespace Calculator
                 default:
                     break;
             }
-        }
+        }*/
         private void Button_Click_C(object sender, RoutedEventArgs e) //Полная очистка
         {
             fis = 0;
-            sec = 0;
-            thi = 0;
+            //sec = 0;
+            //thi = 0;
             perc = 0;
             sqrt = 0;
             cou = 0;
+            def = 0;
             Console.Text = "0";
             ShowSteps.Clear();
             cl = true;
@@ -394,24 +533,34 @@ namespace Calculator
             {
                 abs = true;
             }
-            if (abs) //&& Console.Text[0] != '-')
+            if (abs)
             {
                 Console.Text = "-" + Console.Text;
-                //abs = false;
+                
             }
-            else if(!abs )//&& Console.Text[0] == '-')
+            else if(!abs)
             {
                 Console.Text = Console.Text.TrimStart(minus);
-                //abs = true;
+                
             }
         }
         private void Button_Click_sqrt(object sender, RoutedEventArgs e) //Взятие квадратного корня из числа
         {
+            cou = 5;
             sqrt = float.Parse(Console.Text);
+            if (fp)
+            {
+                def = float.Parse(Convert.ToString(Math.Sqrt(sqrt)));
+            }
+            else
+            {
+                def += float.Parse(Convert.ToString(Math.Sqrt(sqrt)));
+            }
             Console.Text = Convert.ToString(Math.Sqrt(sqrt));
             ShowSteps.Text += "sqrt(" + sqrt + ")";
             zn = true;
             zap = false;
+            fp = false;
         }
         private void Button_Click_percent(object sender, RoutedEventArgs e) //Операции с процентами от числа
         {
@@ -423,12 +572,21 @@ namespace Calculator
         }
         private void Button_Click_1naX(object sender, RoutedEventArgs e) //Деление 1 на введёное число
         {
+            cou = 6;
             float naX = float.Parse(Console.Text);
             ShowSteps.Text += "reciproc(" + naX + ")";
-            float prom = 1 / naX;
-            Console.Text = prom.ToString();
+            if (fp)
+            {
+                def = 1 / naX;
+            }
+            else
+            {
+                def += 1 / naX;
+            }
+            Console.Text = Convert.ToString(1/naX);
             zn = true;
             zap = false;
+            fp = false;
         }
         private void Button_Click_MC(object sender, RoutedEventArgs e) //Очистка памяти
         {
@@ -454,5 +612,77 @@ namespace Calculator
         {
             memory -= float.Parse(Console.Text);
         }
+        /*private double Grid_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.Key == Key.NumPad0) || (e.Key == Key.D0))
+            {
+                Button_Click_0(button0, null);
+            }
+            if ((e.Key == Key.NumPad1) || (e.Key == Key.D1))
+            {
+                Button_Click_1(button1, null);
+            }
+            if ((e.Key == Key.NumPad2) || (e.Key == Key.D2))
+            {
+                Button_Click_2(button2, null);
+            }
+            if ((e.Key == Key.NumPad3) || (e.Key == Key.D3))
+            {
+                Button_Click_3(button3, null);
+            }
+            if ((e.Key == Key.NumPad4) || (e.Key == Key.D4))
+            {
+                Button_Click_4(button4, null);
+            }
+            if ((e.Key == Key.NumPad5) || (e.Key == Key.D5 && e.KeyboardDevice.Modifiers != ModifierKeys.Shift))
+            {
+                Button_Click_5(button5, null);
+            }
+            if ((e.Key == Key.NumPad6) || (e.Key == Key.D6))
+            {
+                Button_Click_6(button6, null);
+            }
+            if ((e.Key == Key.NumPad7) || (e.Key == Key.D7))
+            {
+                Button_Click_7(button7, null);
+            }
+            if ((e.Key == Key.NumPad8) || (e.Key == Key.D8 && e.KeyboardDevice.Modifiers != ModifierKeys.Shift))
+            {
+                Button_Click_8(button8, null);
+            }
+            if ((e.Key == Key.NumPad9) || (e.Key == Key.D9))
+            {
+                Button_Click_9(button9, null);
+            }
+            if ((e.Key == Key.Multiply) || (e.KeyboardDevice.Modifiers == ModifierKeys.Shift && e.Key == Key.D8))
+            {
+                Button_Click_multiplie(buttonMultiplie, null);
+            }
+            if (e.Key == Key.Enter)
+            {
+                Button_Click_ecv(buttonEnter, null);
+            }
+            /*if (e.Key == Key.Back)
+            {
+                Button_Click_Eraser(buttonBackspace, null); //Почему-то не работает!!!!!
+            }
+            if (e.Key == Key.Add)
+            {
+                Button_Click_plus(buttonPlus, null);
+            }
+            if (e.Key == Key.Subtract)
+            {
+                Button_Click_minus(buttonMinus, null);
+            }
+            if (e.Key == Key.Divide)
+            {
+                Button_Click_delim(buttonDelim, null);
+            }
+            if (e.Key == Key.OemComma || e.Key == Key.Decimal)
+            {
+                Button_Click_zap(buttonDot, null);
+            }
+            return 0;
+        }//Использование клавиш клавиатуры */
     }
 }
